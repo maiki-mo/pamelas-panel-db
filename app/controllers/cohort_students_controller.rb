@@ -28,10 +28,10 @@ class CohortStudentsController < ApplicationController
 
     respond_to do |format|
       if @cohort_student.save
-        format.html { redirect_to @cohort_student, notice: 'Cohort student was successfully created.' }
+        format.html { redirect_to instructors_path, notice: 'Cohort student was successfully created.' }
         format.json { render :show, status: :created, location: @cohort_student }
       else
-        format.html { render :new }
+        format.html { redirect_to instructors_path, notice: "It didn't work"}
         format.json { render json: @cohort_student.errors, status: :unprocessable_entity }
       end
     end
@@ -69,6 +69,6 @@ class CohortStudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cohort_student_params
-      params.fetch(:cohort_student, {})
+      params.require(:cohort_student).permit(:student_id, :cohort_id)
     end
 end

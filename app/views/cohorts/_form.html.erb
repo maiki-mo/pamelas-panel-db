@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :start %>
-    <%= form.text_field :start %>
+    <%= form.date_select :start %>
   </div>
 
   <div class="field">
@@ -30,3 +30,15 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+  <%= form_for @cohort_instructor do |f| %>
+    <%= f.collection_select(:instructor_id, Instructor.all, :id, :first_name) %>
+    <%= f.submit "Change or Add Instructor" %>
+<% end %>
+
+<%= form_for @cohort_student do |f| %>
+  <%= f.collection_select(:student_id, Student.all, :id, :first_name) %>
+  <%= f.hidden_field(:cohort_id, value: "#{@cohort.id}") %>
+  <%= f.submit "Add Student" %>
+<% end %>
+

@@ -42,7 +42,7 @@ class CohortInstructorsController < ApplicationController
   def update
     respond_to do |format|
       if @cohort_instructor.update(cohort_instructor_params)
-        format.html { redirect_to @cohort_instructor, notice: 'Cohort instructor was successfully updated.' }
+        format.html { redirect_to instructors_path }
         format.json { render :show, status: :ok, location: @cohort_instructor }
       else
         format.html { render :edit }
@@ -67,8 +67,11 @@ class CohortInstructorsController < ApplicationController
       @cohort_instructor = CohortInstructor.find(params[:id])
     end
 
+    def set_cohort
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def cohort_instructor_params
-      params.fetch(:cohort_instructor, {})
+      params.require(:cohort_instructor).permit(:instructor_id, :cohort_id)
     end
 end

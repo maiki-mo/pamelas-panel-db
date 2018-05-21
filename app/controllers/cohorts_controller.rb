@@ -1,5 +1,6 @@
 class CohortsController < ApplicationController
   before_action :set_cohort, only: [:show, :edit, :update, :destroy]
+  before_action :set_instructor, only: [:edit, :update]
 
   # GET /cohorts
   # GET /cohorts.json
@@ -19,6 +20,8 @@ class CohortsController < ApplicationController
 
   # GET /cohorts/1/edit
   def edit
+    @cohort_instructor = CohortInstructor.find_by(cohort_id: params[:id])
+    @cohort_student = CohortStudent.new
   end
 
   # POST /cohorts
@@ -67,8 +70,28 @@ class CohortsController < ApplicationController
       @cohort = Cohort.find(params[:id])
     end
 
+    def set_instructor
+      @cohort_instructor = CohortInstructor.find_by(cohort_id: params[:id])
+    end
+
+    def add_student
+      @cohort_student = CohortStudent.new
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def cohort_params
       params.require(:cohort).permit(:name, :start, :end)
+    end
+
+    def student_params
+      params.require(:cohort_student).permit(:student_id)
+    end
+
+    def instructor_params
+      params.require(:cohort_instructor).permit(:instructor_id, :cohort_id)
+    end
+    
+    def cohort_student_params
+      params.require(:cohort_student).permit(:student_id, :cohort_id)
     end
 end
