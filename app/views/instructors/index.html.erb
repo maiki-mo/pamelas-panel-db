@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Instructors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Salary</th>
+      <th>Highest Degree</th>
+      <th>Cohorts</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <%= will_paginate @instructors_list %>
+  <tbody>
+    <% @instructors_list.each do |instructor| %>
+      <tr>
+        <td><%= "#{instructor.first_name} #{instructor.last_name}" %></td>
+        <td>&#165;<%= instructor.salary %></td>
+        <td><%= instructor.high_deg %></td>
+        <td>|
+          <% instructor.cohorts.each do | cohort |%>
+          <%= cohort.name %> <%= link_to 'Show', cohort %> |
+          <% end %>
+        </td>
+        <td><%= link_to 'Show', instructor %></td>
+        <td><%= link_to 'Edit', edit_instructor_path(instructor) %></td>
+        <td><%= link_to 'Destroy', instructor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @instructors_list %>
+
+<br>
+
+<%= link_to 'New Instructor', new_instructor_path %>

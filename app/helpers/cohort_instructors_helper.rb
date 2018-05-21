@@ -1,0 +1,2 @@
+module CohortInstructorsHelper
+end

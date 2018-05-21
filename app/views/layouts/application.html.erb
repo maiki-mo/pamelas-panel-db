@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GTGo</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <header>
+    <h1>Here is a header for the entire site</h1>
+
+    <div id="flash">
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
+    </div>
+    <% if signed_in? %>
+      Signed in as: <%= current_user.email %>
+      <%= button_to 'Sign out', sign_out_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Sign in', sign_in_path %>
+    <% end %>
+    </div>
+  </header>
+  <body>
+  
+  <main class="container">
+    <section id="box-1" class="main-info">
+    hi
+    </section>
+    <section id="box-2" class="main-info">
+      <%= yield %>
+    </section>
+    <section id="box-3" class="main-info">
+    hi
+    </section>
+  </main>
+  </body>
+
+  <footer>
+    <h2>Here is some copyright stuff potentially.</h2>
+  </footer>
+</html>
