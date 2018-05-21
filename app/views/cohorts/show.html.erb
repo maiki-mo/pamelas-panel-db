@@ -15,5 +15,12 @@
   <%= @cohort.end %>
 </p>
 
+<p>
+  <strong>Students:</strong><br />
+  <% @cohort.students.uniq.each do | student | %>
+  <%= "#{student.first_name} #{student.last_name}"%><br />
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_cohort_path(@cohort) %> |
 <%= link_to 'Back', cohorts_path %>

@@ -24,11 +24,12 @@ class CohortStudentsController < ApplicationController
   # POST /cohort_students
   # POST /cohort_students.json
   def create
+    debugger
     @cohort_student = CohortStudent.new(cohort_student_params)
 
     respond_to do |format|
       if @cohort_student.save
-        format.html { redirect_to instructors_path, notice: 'Cohort student was successfully created.' }
+        format.html { redirect_to instructors_path, notice: 'Student was successfully added.' }
         format.json { render :show, status: :created, location: @cohort_student }
       else
         format.html { redirect_to instructors_path, notice: "It didn't work"}
@@ -42,7 +43,7 @@ class CohortStudentsController < ApplicationController
   def update
     respond_to do |format|
       if @cohort_student.update(cohort_student_params)
-        format.html { redirect_to @cohort_student, notice: 'Cohort student was successfully updated.' }
+        format.html { redirect_to cohorts_path, notice: 'Cohort student was successfully updated.' }
         format.json { render :show, status: :ok, location: @cohort_student }
       else
         format.html { render :edit }
@@ -54,9 +55,10 @@ class CohortStudentsController < ApplicationController
   # DELETE /cohort_students/1
   # DELETE /cohort_students/1.json
   def destroy
+    debugger
     @cohort_student.destroy
     respond_to do |format|
-      format.html { redirect_to cohort_students_url, notice: 'Cohort student was successfully destroyed.' }
+      format.html { redirect_to cohorts_path, notice: 'Student was successfully removed.' }
       format.json { head :no_content }
     end
   end
@@ -65,6 +67,14 @@ class CohortStudentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_cohort_student
       @cohort_student = CohortStudent.find(params[:id])
+    end
+
+    def current_students
+      @current_students = @cohort_student.cohort.students
+    end
+
+    def remove_student
+      @student_remove = CohortStudent.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -42,3 +42,9 @@
   <%= f.submit "Add Student" %>
 <% end %>
 
+<%= form_for @cohort_student_remove, method: :destroy do |f| %>
+  <%= f.collection_select(:student_id, CohortStudent.find(params[:id]).cohort.students, :id, :first_name) %>
+  <%= f.hidden_field(:cohort_id, value: "#{@cohort.id}") %>
+  <%= f.submit "Remove Student", data: {confirm: "Are you sure?"} %>
+<% end %>
+
