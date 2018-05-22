@@ -10,31 +10,28 @@
   </head>
   <header>
     <h1>Here is a header for the entire site</h1>
-
-    <div id="flash">
-      <% flash.each do |key, value| %>
-        <div class="flash <%= key %>"><%= value %></div>
-      <% end %>
-    </div>
+  </header>
+  <body>
+  
+  <main class="container">
+    <section id="box-1" class="main-info">
     <% if signed_in? %>
       Signed in as: <%= current_user.email %>
       <%= button_to 'Sign out', sign_out_path, method: :delete %>
     <% else %>
       <%= link_to 'Sign in', sign_in_path %>
     <% end %>
-    </div>
-  </header>
-  <body>
-  
-  <main class="container">
-    <section id="box-1" class="main-info">
-    hi
+
+    <p>Here is more stuff that I'm going to write weehee</p>
     </section>
     <section id="box-2" class="main-info">
       <%= yield %>
     </section>
     <section id="box-3" class="main-info">
-    hi
+    <%= link_to 'Courses', courses_path %>
+    <%= link_to 'Cohorts', cohorts_path %>
+    <%= link_to 'Instructors', instructors_path %>
+    <%= link_to 'Students', students_path %>
     </section>
   </main>
   </body>
