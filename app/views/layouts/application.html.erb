@@ -4,12 +4,13 @@
     <title>GTGo</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
   </head>
     <header>
-      <h1>Here is a header for the entire site</h1>
+      <%= image_tag("gto-logo.png", id:"gto-logo") %>
+      <h1>Admin Panel</h1>
     </header>
   <div class="whole">
     <body>

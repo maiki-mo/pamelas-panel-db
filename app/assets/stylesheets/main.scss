@@ -11,21 +11,30 @@ body html p {
 h1 {
   margin: 0;
   padding: 0;
+  font-family: 'Play', sans-serif;
 }
 
 header {
-  text-align: center;
+  text-align: left;
   color: darkgrey;
-  padding-top: 2vw;
-  height: 3vw;
+  height: 5vw;
   background-color: #2E4C9D;
   margin: 0;
   box-shadow: 0.3vw 0.3vw 0.2vw grey;
 }
 
 header>h1 {
+  display: inline-block;
   color: white;
-  float: left;
+  position: relative;
+  bottom: 1.2vw;
+  margin-left: 1vw;
+  font-size: 3vw;
+}
+
+#gto-logo {
+  display: inline-block;
+  height: 5vw;
   margin-left: 1vw;
 }
 
@@ -99,7 +108,8 @@ hr {
   border-radius: 30vw;
   border: 0.7vw #AAB7D9 solid;
   margin-top: -1vw;
-  opacity: 0.4;
+  opacity: 0.2;
+  margin-top: 1vw;
 }
 
 //tables 
