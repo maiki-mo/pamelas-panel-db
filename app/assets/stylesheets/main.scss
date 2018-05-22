@@ -18,9 +18,15 @@ header {
   color: darkgrey;
   padding-top: 2vw;
   height: 3vw;
-  background-color: #607FD2;
+  background-color: #2E4C9D;
   margin: 0;
   box-shadow: 0.3vw 0.3vw 0.2vw grey;
+}
+
+header>h1 {
+  color: white;
+  float: left;
+  margin-left: 1vw;
 }
 
 .container {
@@ -55,15 +61,18 @@ header {
   background-color: white;
   overflow: hidden;
   height: 37.2vw;
-  margin-bottom: 2.45vw;
+  margin-bottom: 2vw;
   box-shadow: 0.3vw 0.3vw 0.2vw grey;
 }
 
 .error-display {
   height: 3vw;
-  background-color: white;
-  margin: 0 2.5vw;
-  box-shadow: 0.3vw 0.3vw 0.2vw grey;
+  background-color: lightgrey;
+  margin: 0 2.1vw 0 2.5vw;
+  box-shadow: 0.8vw 0.3vw 0.3vw grey;
+  position: relative;
+  right: 0.2vw;
+  z-index: 2;
 }
 
 hr {
@@ -82,7 +91,7 @@ hr {
   height: 12vw;
   border-radius: 30vw;
   border: 0.7vw #AAB7D9 solid;
-  margin-top: -1vw;
+  margin-top: 0;
 }
 
 #admin-icon-not {
