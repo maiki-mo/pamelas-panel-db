@@ -20,6 +20,7 @@ class CohortsController < ApplicationController
 
   # GET /cohorts/1/edit
   def edit
+    @cohort_student_remove = CohortStudent.find_by(cohort_id: params[:id])
     @cohort_instructor = CohortInstructor.find_by(cohort_id: params[:id])
     @cohort_student = CohortStudent.new
   end
@@ -90,7 +91,7 @@ class CohortsController < ApplicationController
     def instructor_params
       params.require(:cohort_instructor).permit(:instructor_id, :cohort_id)
     end
-    
+
     def cohort_student_params
       params.require(:cohort_student).permit(:student_id, :cohort_id)
     end
