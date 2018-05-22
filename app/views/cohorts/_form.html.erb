@@ -17,6 +17,11 @@
   </div>
 
   <div class="field">
+    Subject<br />
+    <%= form.collection_select(:course_id, Course.all, :id, :name) %>
+  </div>
+
+  <div class="field">
     <%= form.label :start %>
     <%= form.date_select :start %>
   </div>
@@ -31,20 +36,8 @@
   </div>
 <% end %>
 
-  <%= form_for @cohort_instructor do |f| %>
-    <%= f.collection_select(:instructor_id, Instructor.all, :id, :first_name) %>
-    <%= f.submit "Change or Add Instructor" %>
-<% end %>
+  <%= yield :edit %>
 
-<%= form_for @cohort_student, method: :create do |f| %>
-  <%= f.collection_select(:student_id, Student.all, :id, :first_name) %>
-  <%= f.hidden_field(:cohort_id, value: "#{@cohort.id}") %>
-  <%= f.submit "Add Student" %>
-<% end %>
+<br />
 
-<%= form_for @cohort_student_remove, method: :delete do |f| %>
-  <%= f.collection_select(:student_id, CohortStudent.find_by(cohort_id: params[:id]).cohort.students, :id, :first_name) %>
-  <%= f.hidden_field(:cohort_id, value: "#{@cohort.id}") %>
-  <%= f.submit "Remove Student", data: { confirm: "Are you sure?" } %>
-<% end %>
 
