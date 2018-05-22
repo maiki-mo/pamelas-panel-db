@@ -5,6 +5,7 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @courses = Course.all
+    @courses_list = @courses.paginate(:page => params[:page], :per_page => 5)
   end
 
   # GET /courses/1
@@ -69,6 +70,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:string, :integer)
+      params.require(:course).permit(:name, :hours)
     end
 end

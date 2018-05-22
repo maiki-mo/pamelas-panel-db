@@ -11,6 +11,7 @@
   
   <%= form_for @cohort_instructor do |f| %>
     <%= f.collection_select(:instructor_id, Instructor.all, :id, :full_name) %>
+    <%= f.hidden_field(:cohort_id, value: "#{@cohort.id}") %>
     <%= f.submit "Change or Add Instructor" %>
   <% end %>
 

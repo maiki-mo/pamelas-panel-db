@@ -28,10 +28,10 @@ class CohortInstructorsController < ApplicationController
 
     respond_to do |format|
       if @cohort_instructor.save
-        format.html { redirect_to @cohort_instructor, notice: 'Cohort instructor was successfully created.' }
+        format.html { redirect_to cohorts_path, notice: 'Instructor was successfully created.' }
         format.json { render :show, status: :created, location: @cohort_instructor }
       else
-        format.html { render :new }
+        format.html { redirect_to instructors_path, notice: 'Instructor not added'}
         format.json { render json: @cohort_instructor.errors, status: :unprocessable_entity }
       end
     end

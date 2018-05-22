@@ -5,11 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Name</th>
+      <th>Cohorts</th>
+      <th>Edit</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,6 +17,10 @@
     <% @students_list.each do |student| %>
       <tr>
         <td>Name: <%= "#{student.first_name} #{student.last_name}" %></td>
+        <td><% student.cohorts.each do | cohort | %>| 
+          <%= link_to "#{cohort.name}", edit_cohort_path(cohort.id) %> |
+          <% end %>
+        </td>
         <td><%= link_to 'Show', student %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
         <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>

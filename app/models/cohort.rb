@@ -5,4 +5,5 @@ class Cohort < ApplicationRecord
   has_many :cohort_student
   has_many :students, through: :cohort_student
   validates :name, uniqueness: true
+  validates :course_id, numericality: { integer_only: true, greater_than: 0 }
 end

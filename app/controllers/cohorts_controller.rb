@@ -6,6 +6,7 @@ class CohortsController < ApplicationController
   # GET /cohorts.json
   def index
     @cohorts = Cohort.all
+    @cohorts_list = @cohorts.paginate(:page => params[:page], :per_page => 5)
   end
 
   # GET /cohorts/1
