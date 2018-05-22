@@ -18,7 +18,7 @@ header {
   color: darkgrey;
   padding-top: 2vw;
   height: 3vw;
-  background-color: #53689D;
+  background-color: #607FD2;
   margin: 0;
   box-shadow: 0.3vw 0.3vw 0.2vw grey;
 }
@@ -66,6 +66,12 @@ header {
   box-shadow: 0.3vw 0.3vw 0.2vw grey;
 }
 
+hr {
+ border: 0.3vw #8CA3E3 solid;
+ background-color: #8CA3E3;
+ margin: 0 0;
+ box-shadow: 0.3vw 0.3vw 0.2vw grey;
+}
 //admin/nav box
 
 .admin-info {

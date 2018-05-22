@@ -17,8 +17,6 @@ class CohortsController < ApplicationController
   # GET /cohorts/new
   def new
     @cohort = Cohort.new
-    @cohort_instructor = CohortInstructor.new
-    @cohort_student = CohortStudent.new
   end
 
   # GET /cohorts/1/edit
