@@ -35,8 +35,9 @@ footer {
 .main-info {
   margin: 0.5vw;
   padding: 1vw;
-  border-radius: 1vw;
-  overflow: scroll;
+  border-radius: 1vw 0 0 0;
+  border-right: 1vw rgba(238, 238, 238, 0.3) solid;
+  border-bottom: 1vw rgba(149, 149, 149, 0.3) solid;
 }
 
 #box-1 {
