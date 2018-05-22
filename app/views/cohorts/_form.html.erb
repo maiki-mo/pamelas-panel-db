@@ -36,15 +36,15 @@
     <%= f.submit "Change or Add Instructor" %>
 <% end %>
 
-<%= form_for @cohort_student do |f| %>
+<%= form_for @cohort_student, method: :create do |f| %>
   <%= f.collection_select(:student_id, Student.all, :id, :first_name) %>
   <%= f.hidden_field(:cohort_id, value: "#{@cohort.id}") %>
   <%= f.submit "Add Student" %>
 <% end %>
 
-<%= form_for @cohort_student_remove, method: :destroy do |f| %>
-  <%= f.collection_select(:student_id, CohortStudent.find(params[:id]).cohort.students, :id, :first_name) %>
+<%= form_for @cohort_student_remove, method: :delete do |f| %>
+  <%= f.collection_select(:student_id, CohortStudent.find_by(cohort_id: params[:id]).cohort.students, :id, :first_name) %>
   <%= f.hidden_field(:cohort_id, value: "#{@cohort.id}") %>
-  <%= f.submit "Remove Student", data: {confirm: "Are you sure?"} %>
+  <%= f.submit "Remove Student", data: { confirm: "Are you sure?" } %>
 <% end %>
 

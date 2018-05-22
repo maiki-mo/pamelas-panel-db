@@ -24,7 +24,6 @@ class CohortStudentsController < ApplicationController
   # POST /cohort_students
   # POST /cohort_students.json
   def create
-    debugger
     @cohort_student = CohortStudent.new(cohort_student_params)
 
     respond_to do |format|
@@ -55,7 +54,6 @@ class CohortStudentsController < ApplicationController
   # DELETE /cohort_students/1
   # DELETE /cohort_students/1.json
   def destroy
-    debugger
     @cohort_student.destroy
     respond_to do |format|
       format.html { redirect_to cohorts_path, notice: 'Student was successfully removed.' }
