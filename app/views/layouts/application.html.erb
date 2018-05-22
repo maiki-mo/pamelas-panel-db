@@ -25,6 +25,8 @@
             <br /><br />
             <%= button_to 'Sign out', sign_out_path, method: :delete %>
           <% else %>
+            <%= image_tag("admin-not-logged.png", id:"admin-icon-not") %>
+            <br />
             <%= link_to 'Sign in', sign_in_path %>
           <% end %>
         </div>

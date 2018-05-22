@@ -23,6 +23,7 @@
     <%= " None Assigned" %>
     <% end %>
   <br />
+  
   <%= form_for @cohort_student, method: :create do |f| %>
     <%= f.collection_select(:student_id, Student.all, :id, :full_name) %>
     <%= f.hidden_field(:cohort_id, value: "#{@cohort.id}") %>
