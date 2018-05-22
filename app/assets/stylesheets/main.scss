@@ -8,21 +8,12 @@ h1 {
   margin: 0;
 }
 
-header, footer {
+header {
   text-align: center;
   color: darkgrey;
-  padding: 1vw;
-}
-
-header {
+  padding-top: 2vw;
   height: 3vw;
   background-color: #53689D;
-}
-
-footer {
-  height: 1vw;
-  overflow: hidden;
-  background-color: #D8DFF0
 }
 
 .container {
@@ -61,11 +52,16 @@ footer {
   grid-row: 3;
   background-color: #AAB7D9;
   margin: 0.5vw 3vw;
-  height: 12vw;
+  height: 15.2vw;
   overflow: hidden;
 }
 
 //tables 
+
+td {
+  margin: 0;
+  border: 0;
+}
 
 th {
   background-color: white;
@@ -86,7 +82,7 @@ table {
   margin: 2vw auto;
   padding: 2vw;
   width: 100%;
-  height: 65%;
+  height: 70%;
   background-color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
