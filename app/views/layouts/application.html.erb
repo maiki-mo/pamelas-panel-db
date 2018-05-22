@@ -8,31 +8,40 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <header>
-    <h1>Here is a header for the entire site</h1>
-  </header>
-  <body>
-  
-  <main class="container">
-    <section id="box-1" class="main-info">
-    <% if signed_in? %>
-      Signed in as: <%= current_user.email %>
-      <%= button_to 'Sign out', sign_out_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign in', sign_in_path %>
-    <% end %>
-
-    <p>Here is more stuff that I'm going to write weehee</p>
+    <header>
+      <h1>Here is a header for the entire site</h1>
+    </header>
+  <div class="whole">
+    <body>
+    <section class="error-display">
     </section>
-    <section id="box-2" class="main-info">
-      <%= yield %>
-    </section>
-    <section id="box-3" class="main-info">
-    <%= link_to 'Courses', courses_path %>
-    <%= link_to 'Cohorts', cohorts_path %>
-    <%= link_to 'Instructors', instructors_path %>
-    <%= link_to 'Students', students_path %>
-    </section>
-  </main>
-  </body>
+    <main class="container">
+      <section id="box-1" class="main-info">
+        <div class="admin-info">
+          <% if signed_in? %>
+          <%= image_tag("admin.png", id:"admin-icon") %>
+          <br />
+            Signed in as: <%= current_user.email %>
+            <br /><br />
+            <%= button_to 'Sign out', sign_out_path, method: :delete %>
+          <% else %>
+            <%= link_to 'Sign in', sign_in_path %>
+          <% end %>
+        </div>
+      <br />
+      <br />
+      <nav>
+        <%= link_to 'Courses', courses_path %><br />
+        <%= link_to 'Cohorts', cohorts_path %><br />
+        <%= link_to 'Instructors', instructors_path %><br />
+        <%= link_to 'Students', students_path %><br /><br />
+      </nav>
+      <p>Here is more stuff that I'm going to write weehee</p>
+      </section>
+      <section id="box-2" class="main-info">
+        <%= yield %>
+      </section>
+    </main>
+    </body>
+  </div>
 </html>
