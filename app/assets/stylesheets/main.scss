@@ -27,8 +27,7 @@ header>h1 {
   display: inline-block;
   color: white;
   position: relative;
-  bottom: 1.2vw;
-  margin-left: 1vw;
+  bottom: 0.5vw;
   font-size: 3vw;
 }
 
@@ -90,7 +89,15 @@ hr {
  margin: 0 0;
  box-shadow: 0.3vw 0.3vw 0.2vw grey;
 }
-//admin/nav box
+//admin/nav box/errors
+
+#notice {
+  background-color: #70B76C;
+}
+
+#error {
+  background-color: #E38C85;
+}
 
 .admin-info {
   margin: 0 auto;
