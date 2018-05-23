@@ -1,19 +1,23 @@
+<br />
 <h1>Editing Cohort</h1>
-
-<% content_for :edit do %>  
-  <h3>Current Instructor:</h3>
-  <% if @cohort.instructor %>
-  <%= @cohort.instructor.full_name %>
-  <% else %>
-  <%= " None Assigned" %>
-  <% end %>
-  <br />
-  <%= form_for @cohort_instructor do |f| %>
-    <%= f.collection_select(:instructor_id, Instructor.all, :id, :full_name) %>
-    <%= f.hidden_field(:cohort_id, value: "#{@cohort.id}") %>
-    <%= f.submit "Change or Add Instructor" %>
-  <% end %>
-  
+<br />
+<hr>
+<% content_for :edit do %>
+<div id="edit-box-2">
+      <h3>Current Instructor:</h3>
+      <% if @cohort.instructor %>
+      <%= @cohort.instructor.full_name %>
+      <% else %>
+      <%= " None Assigned" %>
+      <% end %>
+      <br />
+      <%= form_for @cohort_instructor do |f| %>
+        <%= f.collection_select(:instructor_id, Instructor.all, :id, :full_name) %>
+        <%= f.hidden_field(:cohort_id, value: "#{@cohort.id}") %>
+        <%= f.submit "Change or Add Instructor" %>
+      <% end %>
+</div>
+<div id="edit-box-3">
   <h3>Current Students:</h3>
     <% if @cohort.students %>
       <% @cohort.students.each do |students| %>
@@ -38,6 +42,7 @@
       <%= f.submit "Remove Student", data: { confirm: "Are you sure?" } %>
     <% end %>
   <% end %>
+</div>
 
 <% end %>
 
