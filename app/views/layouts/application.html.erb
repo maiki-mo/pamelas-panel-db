@@ -40,10 +40,12 @@
         </div>
       <br />
       <nav>
-        <strong>Courses:</strong> <%= link_to 'View', courses_path %> | <%= link_to 'New', new_course_path %><br />
-        <strong>Cohorts:</strong> <%= link_to 'View', cohorts_path %> | <%= link_to 'New', new_cohort_path %><br />
-        <strong>Instructors:</strong> <%= link_to 'View', instructors_path %> | <%= link_to 'New', new_instructor_path %><br />
-        <strong>Students:</strong> <%= link_to 'View', students_path %> | <%= link_to 'New', new_student_path %><br />
+        <% if signed_in?%>
+          <strong>Courses:</strong> <%= link_to 'View', courses_path %> | <%= link_to 'New', new_course_path %><br />
+          <strong>Cohorts:</strong> <%= link_to 'View', cohorts_path %> | <%= link_to 'New', new_cohort_path %><br />
+          <strong>Instructors:</strong> <%= link_to 'View', instructors_path %> | <%= link_to 'New', new_instructor_path %><br />
+          <strong>Students:</strong> <%= link_to 'View', students_path %> | <%= link_to 'New', new_student_path %><br />
+        <% end %>
       </nav>
       </section>
       <section id="box-2" class="main-info">
