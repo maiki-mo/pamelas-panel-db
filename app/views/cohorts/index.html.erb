@@ -9,6 +9,7 @@
     <tr>
       <th>Name</th>
       <th>Course</th>
+      <th>Instructor</th>
       <th>Start Date</th>
       <th>End Date</th>
       <th colspan="3">Edit</th>
@@ -20,6 +21,11 @@
       <tr>
         <td><%= cohort.name %></td>
         <td><%= cohort.course.name %></td>
+        <% if cohort.instructor %>
+          <td><%= cohort.instructor.full_name %></td>
+        <% else %>
+          <td>No Instructor Assigned</td>
+        <% end %>
         <td><%= cohort.start %></td>
         <td><%= cohort.end %></td>
         <td><%= link_to 'Show', cohort %></td>
