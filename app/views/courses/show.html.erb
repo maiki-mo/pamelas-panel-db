@@ -1,12 +1,18 @@
-<p>
-  <strong>String:</strong>
-  <%= @course.name %>
-</p>
+<strong>Name:</strong>
+<%= @course.name %><br />
 
-<p>
-  <strong>Integer:</strong>
-  <%= @course.hours %>
-</p>
+<strong>Hours:</strong>
+<%= @course.hours %><br />
+
+<strong>Students taking courses:</strong><br />
+<% @course.students.uniq.each do |student| %>
+  <%= student.full_name %><br/>
+<% end %>
+
+<strong>Instructors teaching courses:</strong><br />
+<% @course.instructors.uniq.each do |instructor| %>
+  <%= instructor.full_name %><br/>
+<% end %>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>

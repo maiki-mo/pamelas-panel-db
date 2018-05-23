@@ -1,6 +1,8 @@
 class Instructor < ApplicationRecord
   has_many :cohort_instructors
   has_many :cohorts, through: :cohort_instructors
+  has_many :students
+  has_many :students, through: :cohorts
   validates :first_name, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
   validates :last_name, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letter" }
   validates :salary, presence: true, numericality: { integer_only: true, greater_than: 100000 }
