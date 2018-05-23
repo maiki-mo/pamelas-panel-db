@@ -13,7 +13,7 @@
     <header>
       <%= image_tag("gto-logo.png", id:"gto-logo") %>
       <h1>Admin Panel</h1>
-      <span id="quote"><i><%=@quote[@rand]%></i> - Onizuka</span>
+      <span id="quote">"<i><%=@quote[@rand]%></i>" - Onizuka</span>
     </header>
   <div class="whole">
     <body>
@@ -40,10 +40,10 @@
         </div>
       <br />
       <nav>
-        <strong>Courses:</strong> <%= link_to 'Show', courses_path %> | <%= link_to 'New', new_course_path %><br />
-        <strong>Cohorts:</strong> <%= link_to 'Show', cohorts_path %> | <%= link_to 'New', new_cohort_path %><br />
-        <strong>Instructors:</strong> <%= link_to 'Instructors', instructors_path %> | <%= link_to 'New', new_instructor_path %><br />
-        <strong>Students:</strong> <%= link_to 'Students', students_path %> | <%= link_to 'New', new_student_path %><br />
+        <strong>Courses:</strong> <%= link_to 'View', courses_path %> | <%= link_to 'New', new_course_path %><br />
+        <strong>Cohorts:</strong> <%= link_to 'View', cohorts_path %> | <%= link_to 'New', new_cohort_path %><br />
+        <strong>Instructors:</strong> <%= link_to 'View', instructors_path %> | <%= link_to 'New', new_instructor_path %><br />
+        <strong>Students:</strong> <%= link_to 'View', students_path %> | <%= link_to 'New', new_student_path %><br />
       </nav>
       </section>
       <section id="box-2" class="main-info">
