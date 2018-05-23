@@ -1,6 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Instructors</h1>
+<h1 style="display: inline-block;">Instructors</h1>
+<%= link_to 'New Instructor', new_instructor_path %>
+<br />
+<br />
 
 <table>
   <thead>
@@ -33,7 +34,3 @@
   </tbody>
 </table>
 <%= will_paginate @instructors_list %>
-
-<br>
-
-<%= link_to 'New Instructor', new_instructor_path %>

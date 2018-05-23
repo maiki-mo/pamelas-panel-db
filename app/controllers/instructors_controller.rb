@@ -1,4 +1,5 @@
 class InstructorsController < ApplicationController
+  before_action :require_login
   before_action :set_instructor, only: [:show, :edit, :update, :destroy]
 
   # GET /instructors
@@ -32,7 +33,7 @@ class InstructorsController < ApplicationController
         format.html { redirect_to @instructor, notice: 'Instructor was successfully created.' }
         format.json { render :show, status: :created, location: @instructor }
       else
-        format.html { render :new }
+        format.html { redirect_to new_instructor_path, alert: "Instructor was not created: #{@instructor.errors.full_messages.to_sentence}" }
         format.json { render json: @instructor.errors, status: :unprocessable_entity }
       end
     end
@@ -46,7 +47,7 @@ class InstructorsController < ApplicationController
         format.html { redirect_to @instructor, notice: 'Instructor was successfully updated.' }
         format.json { render :show, status: :ok, location: @instructor }
       else
-        format.html { render :edit }
+        format.html { redirect_to edit_instructor_path, alert: "Instructor was not updated: #{@instructor.errors.full_messages.to_sentence}" }
         format.json { render json: @instructor.errors, status: :unprocessable_entity }
       end
     end

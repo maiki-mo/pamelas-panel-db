@@ -1,23 +1,41 @@
 <h1>Editing Cohort</h1>
 
-<% content_for :edit do %>
+<% content_for :edit do %>  
+  <h3>Current Instructor:</h3>
+  <% if @cohort.instructor %>
+  <%= @cohort.instructor.full_name %>
+  <% else %>
+  <%= " None Assigned" %>
+  <% end %>
+  <br />
+  <%= form_for @cohort_instructor do |f| %>
+    <%= f.collection_select(:instructor_id, Instructor.all, :id, :full_name) %>
+    <%= f.hidden_field(:cohort_id, value: "#{@cohort.id}") %>
+    <%= f.submit "Change or Add Instructor" %>
+  <% end %>
+  
+  <h3>Current Students:</h3>
+    <% if @cohort.students %>
+      <% @cohort.students.each do |students| %>
+        <%= students.full_name %><br />
+      <% end %>
+    <% else %>
+    <%= " None Assigned" %>
+    <% end %>
+  <br />
+  
+  <%= form_for @cohort_student, method: :create do |f| %>
+    <%= f.collection_select(:student_id, Student.all, :id, :full_name) %>
+    <%= f.hidden_field(:cohort_id, value: "#{@cohort.id}") %>
+    <%= f.submit "Add Student", data: { confirm: "Add student?" } %>
+  <% end %>
+
   <% if @cohort_student_remove %>
     <%= form_for @cohort_student_remove, method: :delete do |f| %>
       <%= f.collection_select(:student_id, CohortStudent.find_by(cohort_id: params[:id]).cohort.students, :id, :full_name) %>
       <%= f.hidden_field(:cohort_id, value: "#{@cohort.id}") %>
       <%= f.submit "Remove Student", data: { confirm: "Are you sure?" } %>
     <% end %>
-  <% end %>
-  
-  <%= form_for @cohort_instructor do |f| %>
-    <%= f.collection_select(:instructor_id, Instructor.all, :id, :full_name) %>
-    <%= f.submit "Change or Add Instructor" %>
-  <% end %>
-
-  <%= form_for @cohort_student, method: :create do |f| %>
-    <%= f.collection_select(:student_id, Student.all, :id, :full_name) %>
-    <%= f.hidden_field(:cohort_id, value: "#{@cohort.id}") %>
-    <%= f.submit "Add Student", data: { confirm: "Add student?" } %>
   <% end %>
 
 <% end %>

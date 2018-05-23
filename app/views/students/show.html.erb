@@ -1,29 +1,16 @@
-<p id="notice"><%= notice %></p>
+<h3>Student: <%= @student.full_name %></h3><br />
 
-<p>
-  <strong>:</strong>
-  <%= @student. %>
-</p>
+<%="#{@student.first_name} currently attends the following courses: "%>
 
-<p>
-  <strong>:</strong>
-  <%= @student. %>
-</p>
-
-<p>
-  <strong>:</strong>
-  <%= @student. %>
-</p>
-
-<p>
-  <strong>:</strong>
-  <%= @student. %>
-</p>
-
-<p>
-  <strong>:</strong>
-  <%= @student. %>
-</p>
-
+<br />
+    <% @student.cohorts.each do |cohort| %>
+        <%= link_to "#{cohort.name}", edit_cohort_path(cohort)%><br />
+    <% end %>
+  <br />
+  <%="#{@student.first_name} is taught by: "%><br />
+    <% @student.instructors.uniq.each do |instructor| %>
+        <%= link_to "#{instructor.full_name}", edit_instructor_path(instructor)%><br />
+    <% end %>
+    <br />
 <%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+<%= link_to 'Back', student_path %>

@@ -4,42 +4,48 @@
     <title>GTGo</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
   </head>
-  <header>
-    <h1>Here is a header for the entire site</h1>
-
-    <div id="flash">
-      <% flash.each do |key, value| %>
-        <div class="flash <%= key %>"><%= value %></div>
-      <% end %>
-    </div>
-    <% if signed_in? %>
-      Signed in as: <%= current_user.email %>
-      <%= button_to 'Sign out', sign_out_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign in', sign_in_path %>
-    <% end %>
-    </div>
-  </header>
-  <body>
-  
-  <main class="container">
-    <section id="box-1" class="main-info">
-    hi
+    <header>
+      <%= image_tag("gto-logo.png", id:"gto-logo") %>
+      <h1>Admin Panel</h1>
+    </header>
+  <div class="whole">
+    <body>
+    <hr>
+    <section class="error-display">
+      <span id="notice"><%= notice %></span>
+      <span id="error"><%= alert %></span>
     </section>
-    <section id="box-2" class="main-info">
-      <%= yield %>
-    </section>
-    <section id="box-3" class="main-info">
-    hi
-    </section>
-  </main>
-  </body>
-
-  <footer>
-    <h2>Here is some copyright stuff potentially.</h2>
-  </footer>
+    <main class="container">
+      <section id="box-1" class="main-info">
+        <div class="admin-info">
+          <% if signed_in? %>
+          <%= image_tag("admin.png", id:"admin-icon") %>
+          <br />
+            Signed in as: <%= current_user.email %>
+            <br /><br />
+            <%= button_to 'Sign out', sign_out_path, method: :delete %>
+          <% else %>
+            <%= image_tag("admin-not-logged.png", id:"admin-icon-not") %>
+            <br />
+            <%= link_to 'Sign in', sign_in_path %>
+          <% end %>
+        </div>
+      <br />
+      <nav>
+        <%= link_to 'Courses', courses_path %><br />
+        <%= link_to 'Cohorts', cohorts_path %><br />
+        <%= link_to 'Instructors', instructors_path %><br />
+        <%= link_to 'Students', students_path %><br /><br />
+      </nav>
+      </section>
+      <section id="box-2" class="main-info">
+        <%= yield %>
+      </section>
+    </main>
+    </body>
+  </div>
 </html>

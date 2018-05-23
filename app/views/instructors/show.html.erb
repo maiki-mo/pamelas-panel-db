@@ -1,4 +1,16 @@
-<p id="notice"><%= notice %></p>
+<h3>Instructor: <%= @instructor.full_name %></h3><br />
 
+<%="#{@instructor.first_name} currently teaches the following courses: "%>
+
+<br />
+    <% @instructor.cohorts.each do |cohort| %>
+        <%= link_to "#{cohort.name}", edit_cohort_path(cohort)%><br />
+    <% end %>
+  <br />
+  <%="#{@instructor.first_name} currently teaches the following students: "%><br />
+    <% @instructor.students.each do |student| %>
+        <%= link_to "#{student.full_name}", edit_student_path(student)%><br />
+    <% end %>
+    <br />
 <%= link_to 'Edit', edit_instructor_path(@instructor) %> |
 <%= link_to 'Back', instructors_path %>
