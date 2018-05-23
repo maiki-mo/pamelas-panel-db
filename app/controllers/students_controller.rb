@@ -33,7 +33,7 @@ class StudentsController < ApplicationController
         format.html { redirect_to @student, notice: 'Student was successfully created.' }
         format.json { render :show, status: :created, location: @student }
       else
-        format.html { render :new }
+        format.html { redirect_to new_student_path, alert: "Student was not created. Firstly: #{@student.errors.full_messages.first}" }
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end
     end
@@ -47,7 +47,7 @@ class StudentsController < ApplicationController
         format.html { redirect_to @student, notice: 'Student was successfully updated.' }
         format.json { render :show, status: :ok, location: @student }
       else
-        format.html { render :edit }
+        format.html { redirect_to edit_student_path, alert: "Student was not updated. Firstly: #{@student.errors.full_messages.first}" }
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end
     end
