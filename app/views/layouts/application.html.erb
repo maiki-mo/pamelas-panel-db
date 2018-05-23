@@ -1,3 +1,5 @@
+<% @quote = get_quotes %>
+<% @rand = get_rand %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,6 +13,7 @@
     <header>
       <%= image_tag("gto-logo.png", id:"gto-logo") %>
       <h1>Admin Panel</h1>
+      <span id="quote"><i><%=@quote[@rand]%></i> - Onizuka</span>
     </header>
   <div class="whole">
     <body>
@@ -25,6 +28,7 @@
           <% if signed_in? %>
           <%= image_tag("admin.png", id:"admin-icon") %>
           <br />
+          <br />
             Signed in as: <%= current_user.email %>
             <br /><br />
             <%= button_to 'Sign out', sign_out_path, method: :delete %>
@@ -36,10 +40,10 @@
         </div>
       <br />
       <nav>
-        <%= link_to 'Courses', courses_path %><br />
-        <%= link_to 'Cohorts', cohorts_path %><br />
-        <%= link_to 'Instructors', instructors_path %><br />
-        <%= link_to 'Students', students_path %><br /><br />
+        Courses: <%= link_to 'Show', courses_path %> | <%= link_to 'New', new_course_path %><br />
+        Cohorts: <%= link_to 'Show', cohorts_path %> | <%= link_to 'New', new_cohort_path %><br />
+        Instructors: <%= link_to 'Instructors', instructors_path %> | <%= link_to 'New', new_instructor_path %><br />
+        Students: <%= link_to 'Students', students_path %> | <%= link_to 'New', new_student_path %><br />
       </nav>
       </section>
       <section id="box-2" class="main-info">
