@@ -1,16 +1,6 @@
 class CohortInstructorsController < ApplicationController
+  before_action :require_login
   before_action :set_cohort_instructor, only: [:show, :edit, :update, :destroy]
-
-  # GET /cohort_instructors
-  # GET /cohort_instructors.json
-  def index
-    @cohort_instructors = CohortInstructor.all
-  end
-
-  # GET /cohort_instructors/1
-  # GET /cohort_instructors/1.json
-  def show
-  end
 
   # GET /cohort_instructors/new
   def new
@@ -28,10 +18,10 @@ class CohortInstructorsController < ApplicationController
 
     respond_to do |format|
       if @cohort_instructor.save
-        format.html { redirect_to cohorts_path, notice: 'Instructor was successfully created.' }
+        format.html { redirect_to cohorts_path, notice: "Instructor added to cohort!" }
         format.json { render :show, status: :created, location: @cohort_instructor }
       else
-        format.html { redirect_to instructors_path, notice: 'Instructor not added'}
+        format.html { redirect_to instructors_path, error: "Instructor was not added: #{@cohort.instructor.errors.full_messages}"}
         format.json { render json: @cohort_instructor.errors, status: :unprocessable_entity }
       end
     end
@@ -56,7 +46,7 @@ class CohortInstructorsController < ApplicationController
   def destroy
     @cohort_instructor.destroy
     respond_to do |format|
-      format.html { redirect_to cohort_instructors_url, notice: 'Cohort instructor was successfully destroyed.' }
+      format.html { redirect_to cohort_instructors_url, notice: 'Instructor was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

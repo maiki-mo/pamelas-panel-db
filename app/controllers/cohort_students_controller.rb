@@ -1,16 +1,6 @@
 class CohortStudentsController < ApplicationController
+  before_action :require_login
   before_action :set_cohort_student, only: [:show, :edit, :update, :destroy]
-
-  # GET /cohort_students
-  # GET /cohort_students.json
-  def index
-    @cohort_students = CohortStudent.all
-  end
-
-  # GET /cohort_students/1
-  # GET /cohort_students/1.json
-  def show
-  end
 
   # GET /cohort_students/new
   def new
@@ -31,7 +21,7 @@ class CohortStudentsController < ApplicationController
         format.html { redirect_to instructors_path, notice: 'Student was successfully added.' }
         format.json { render :show, status: :created, location: @cohort_student }
       else
-        format.html { redirect_to instructors_path, notice: "It didn't work"}
+        format.html { redirect_to instructors_path, error: "Student not added: #{@cohort_student.errors.full_messages}" }
         format.json { render json: @cohort_student.errors, status: :unprocessable_entity }
       end
     end
@@ -42,7 +32,7 @@ class CohortStudentsController < ApplicationController
   def update
     respond_to do |format|
       if @cohort_student.update(cohort_student_params)
-        format.html { redirect_to cohorts_path, notice: 'Cohort student was successfully updated.' }
+        format.html { redirect_to cohorts_path, notice: 'Cohort was successfully updated.' }
         format.json { render :show, status: :ok, location: @cohort_student }
       else
         format.html { render :edit }

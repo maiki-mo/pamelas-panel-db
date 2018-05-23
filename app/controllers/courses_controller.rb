@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  before_action :require_login
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   # GET /courses
@@ -32,7 +33,7 @@ class CoursesController < ApplicationController
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
       else
-        format.html { render :new }
+        format.html { render :new, error: "Course was not created: #{@course.errors.full_messages}" }
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end

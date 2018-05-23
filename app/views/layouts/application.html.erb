@@ -16,6 +16,12 @@
     <body>
     <hr>
     <section class="error-display">
+      <% if flash[:notice] %>
+        <div class="success"><%= flash[:notice] %></div>
+      <% end %>
+      <% if flash[:error]%>
+        <div class"error"><%= flash[:error] %></div>
+      <% end %>
     </section>
     <main class="container">
       <section id="box-1" class="main-info">

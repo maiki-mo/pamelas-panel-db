@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  before_action :require_login
   before_action :set_student, only: [:show, :edit, :update, :destroy]
 
   # GET /students
@@ -32,7 +33,7 @@ class StudentsController < ApplicationController
         format.html { redirect_to @student, notice: 'Student was successfully created.' }
         format.json { render :show, status: :created, location: @student }
       else
-        format.html { render :new }
+        format.html { render :new, error: "Student was not created: #{@student.errors.full_messages}" }
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end
     end

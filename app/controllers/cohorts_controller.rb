@@ -1,4 +1,5 @@
 class CohortsController < ApplicationController
+  before_action :require_login
   before_action :set_cohort, only: [:show, :edit, :update, :destroy]
   before_action :set_instructor, only: [:edit, :update]
 
@@ -42,7 +43,7 @@ class CohortsController < ApplicationController
         format.html { redirect_to @cohort, notice: 'Cohort was successfully created.' }
         format.json { render :show, status: :created, location: @cohort }
       else
-        format.html { render :new }
+        format.html { render :new, error: "Cohort was not created: #{@cohort.errors.full_messages}"}
         format.json { render json: @cohort.errors, status: :unprocessable_entity }
       end
     end
