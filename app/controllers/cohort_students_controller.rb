@@ -32,7 +32,7 @@ class CohortStudentsController < ApplicationController
         format.html { redirect_to cohorts_path, notice: 'Student was successfully added.' }
         format.json { render :show, status: :created, location: @cohort_student }
       else
-        format.html { redirect_to edit_cohort_path,  alert: "Student was not added. Firstly: #{@cohort_student.errors.full_messages.first}"}
+        format.html { redirect_to edit_cohort_path,  alert: "Student was not added: #{@cohort_student.errors.full_messages.to_sentence}"}
         format.json { render json: @cohort_student.errors, status: :unprocessable_entity }
       end
     end
@@ -46,7 +46,7 @@ class CohortStudentsController < ApplicationController
         format.html { redirect_to cohorts_path, notice: 'Cohort was successfully updated.' }
         format.json { render :show, status: :ok, location: @cohort_student }
       else
-        format.html { redirect_to edit_cohort_path, alert: "Student was not added. Firstly: #{@cohort_student.errors.full_messages.first}" }
+        format.html { redirect_to edit_cohort_path, alert: "Student was not added: #{@cohort_student.errors.full_messages.to_sentence}" }
         format.json { render json: @cohort_student.errors, status: :unprocessable_entity }
       end
     end

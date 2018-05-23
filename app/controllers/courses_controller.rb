@@ -33,7 +33,7 @@ class CoursesController < ApplicationController
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
         format.json { render :show, status: :created, location: @course }
       else
-        format.html { redirect_to new_course_path, alert: "Course was not created. Firstly: #{@course.errors.full_messages.first}" }
+        format.html { redirect_to new_course_path, alert: "Course was not created: #{@course.errors.full_messages.to_sentence}." }
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
@@ -47,7 +47,7 @@ class CoursesController < ApplicationController
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
         format.json { render :show, status: :ok, location: @course }
       else
-        format.html { redirect_to edit_course_path,  alert: "Course was not updated. Firstly: #{@course.errors.full_messages.first}" }
+        format.html { redirect_to edit_course_path,  alert: "Course was not updated: #{@course.errors.full_messages.to_sentence}." }
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end

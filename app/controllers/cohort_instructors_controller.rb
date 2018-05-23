@@ -32,7 +32,7 @@ class CohortInstructorsController < ApplicationController
         format.html { redirect_to cohorts_path, notice: 'Cohort was successfully updated.' }
         format.json { render :show, status: :created, location: @cohort_instructor }
       else
-        format.html { redirect_to edit_cohort_path,  alert: "Cohort was not updated. Firstly: #{@cohort_instructor.errors.full_messages.first}"}
+        format.html { redirect_to edit_cohort_path,  alert: "Cohort was not updated: #{@cohort_instructor.errors.full_messages.to_sentence}"}
         format.json { render json: @cohort_instructor.errors, status: :unprocessable_entity }
       end
     end
@@ -46,7 +46,7 @@ class CohortInstructorsController < ApplicationController
         format.html { redirect_to cohorts_path, notice: 'Cohort was successfully updated.' }
         format.json { render :show, status: :ok, location: @cohort_instructor }
       else
-        format.html { redirect_to edit_cohort_path,  alert: "Course was not updated. Firstly: #{@cohort_instructor.errors.full_messages.first}" }
+        format.html { redirect_to edit_cohort_path,  alert: "Course was not updated: #{@cohort_instructor.errors.full_messages.to_sentence}" }
         format.json { render json: @cohort_instructor.errors, status: :unprocessable_entity }
       end
     end
