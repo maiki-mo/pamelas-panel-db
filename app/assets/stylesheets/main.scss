@@ -62,6 +62,15 @@ header>h1 {
   color: white;
 }
 
+a {
+  text-decoration: none;
+  font-style: italic;
+}
+
+a:hover {
+  font-style: italic;
+}
+
 #box-1 {
   grid-column: 1;
   grid-row: 1/3;
