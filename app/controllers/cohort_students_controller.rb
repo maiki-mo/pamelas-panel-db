@@ -1,4 +1,5 @@
 class CohortStudentsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:new, :edit, :update, :destroy]
   before_action :require_login
   before_action :set_cohort_student, only: [:show, :edit, :update, :destroy]
 

@@ -25,6 +25,7 @@
   <br />
   
   <%= form_for @cohort_student, method: :create do |f| %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <%= f.collection_select(:student_id, Student.all, :id, :full_name) %>
     <%= f.hidden_field(:cohort_id, value: "#{@cohort.id}") %>
     <%= f.submit "Add Student", data: { confirm: "Add student?" } %>

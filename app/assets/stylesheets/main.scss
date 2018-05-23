@@ -53,6 +53,15 @@ header>h1 {
   // border-bottom: 1vw rgba(149, 149, 149, 0.3) solid;
 }
 
+#quote {
+  float: right;
+  margin-right: 1vw;
+  position: relative;
+  top: 3.3vw;
+  font-size: 1vw;
+  color: white;
+}
+
 #box-1 {
   grid-column: 1;
   grid-row: 1/3;
@@ -117,7 +126,7 @@ hr {
   height: 12vw;
   border-radius: 30vw;
   border: 0.7vw #AAB7D9 solid;
-  margin-top: 1vw;
+  margin-top: 0.5vw;
 }
 
 #admin-icon-not {
@@ -126,7 +135,7 @@ hr {
   border: 0.7vw #AAB7D9 solid;
   margin-top: -1vw;
   opacity: 0.2;
-  margin-top: 1vw;
+  margin-top: 0.5vw;
 }
 
 //tables 
