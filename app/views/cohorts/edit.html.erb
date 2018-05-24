@@ -8,7 +8,7 @@
       <% if @cohort.instructor %>
       <%= @cohort.instructor.full_name %>
       <% else %>
-      <%= " None Assigned" %>
+      <%= "None Assigned" %>
       <% end %>
       <br />
       <%= form_for @cohort_instructor do |f| %>
@@ -19,12 +19,12 @@
       <br />
 <hr>
   <h3>Current Students:</h3>
-    <% if @cohort.students %>
+    <% if @cohort.students.any? %>
       <% @cohort.students.each do |students| %>
         <%= students.full_name %><br />
       <% end %>
     <% else %>
-    <%= " None Assigned" %>
+    None Assigned
     <% end %>
   <br />
   
