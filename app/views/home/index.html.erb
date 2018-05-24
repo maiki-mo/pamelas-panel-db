@@ -1,1 +1,16 @@
-<h3>Please sign in.</h3>
+<% if signed_in? %>
+<br />
+  <h1>Contents:</h1>
+  <br />
+  <hr>
+  <h3>Number of Courses: <%= @courses.length %></h3>
+    <%= link_to 'View Courses', courses_path %>
+  <h3>Number of Cohorts: <%= @cohorts.length %></h3>
+    <%= link_to 'View Cohorts', cohorts_path %>
+  <h3>Number of Students: <%= @students.length %></h3>
+    <%= link_to 'View Students', students_path %>
+  <h3>Number of Instructors: <%= @instructors.length %></h3>
+    <%= link_to 'View Instructors', instructors_path %>
+<% else%>
+  <h3>Please sign in.</h3>
+<% end %>
