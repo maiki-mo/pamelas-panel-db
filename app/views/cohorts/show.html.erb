@@ -1,24 +1,21 @@
-<p>
-  <strong>Name:</strong>
-  <%= @cohort.name %>
-</p>
+<br />
+  <h1>
+    <%= @cohort.name %>
+  </h1>
+<br />
+  <hr>
 
-<p>
-  <strong>Start:</strong>
+  <h3>Start:</h3>
   <%= @cohort.start %>
-</p>
 
-<p>
-  <strong>End:</strong>
+  <h3>End:</h3>
   <%= @cohort.end %>
-</p>
 
-<p>
-  <strong>Students:</strong><br />
+  <h3>Students:</h3>
   <% @cohort.students.uniq.each do | student | %>
   <%= "#{student.first_name} #{student.last_name}"%><br />
   <% end %>
-</p>
+<br />
 
 <%= link_to 'Edit', edit_cohort_path(@cohort) %> |
 <%= link_to 'Back', cohorts_path %>
