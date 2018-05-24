@@ -12,7 +12,11 @@
   <%= @cohort.end %>
 
   <h3>Instructor:</h3>
-  <%= link_to "#{@cohort.instructor.full_name}", instructor_path(@cohort.instructor.id)%><br/>
+  <% if @cohort.instructor %>
+    <%= link_to "#{@cohort.instructor.full_name}", instructor_path(@cohort.instructor.id) %><br/>
+  <% else %>
+    No Instructor Assigned
+  <% end %>
 
   <h3>Students:</h3>
   <% @cohort.students.uniq.each do | student | %>
