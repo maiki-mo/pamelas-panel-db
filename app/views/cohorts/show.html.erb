@@ -19,9 +19,14 @@
   <% end %>
 
   <h3>Students:</h3>
-  <% @cohort.students.uniq.each do | student | %>
-  <%= link_to "#{student.full_name}", student_path(student)%><br />
+  <% if @cohort.students.any? %>
+    <% @cohort.students.uniq.each do | student | %>
+      <%= link_to "#{student.full_name}", student_path(student)%><br />
+    <% end %>
+  <% else %>
+    No Students Assigned
   <% end %>
+  <br />
 <br />
 
 <%= link_to 'Edit', edit_cohort_path(@cohort) %> |
