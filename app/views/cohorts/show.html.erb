@@ -11,9 +11,12 @@
   <h3>End:</h3>
   <%= @cohort.end %>
 
+  <h3>Instructor:</h3>
+  <%= link_to "#{@cohort.instructor.full_name}", instructor_path(@cohort.instructor.id)%><br/>
+
   <h3>Students:</h3>
   <% @cohort.students.uniq.each do | student | %>
-  <%= "#{student.first_name} #{student.last_name}"%><br />
+  <%= link_to "#{student.full_name}", student_path(student)%><br />
   <% end %>
 <br />
 

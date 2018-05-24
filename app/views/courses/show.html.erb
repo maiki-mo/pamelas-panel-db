@@ -9,14 +9,14 @@
 <h3>Hours:</h3>
 <%= @course.hours %><br />
 
-<h3>Students taking courses:</h3>
+<h3>Students taking subject:</h3>
 <% @course.students.uniq.each do |student| %>
-  <%= student.full_name %><br/>
+  <%= link_to "#{student.full_name}", student_path(student)%><br/>
 <% end %>
 
-<h3>Instructors teaching courses:</h3>
+<h3>Instructors teaching subject:</h3>
 <% @course.instructors.uniq.each do |instructor| %>
-  <%= instructor.full_name %><br/>
+  <%= link_to "#{instructor.full_name}", instructor_path(instructor)%><br/>
 <% end %>
 <br />
 

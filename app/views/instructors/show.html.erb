@@ -1,13 +1,14 @@
-<h3>Instructor: <%= @instructor.full_name %></h3><br />
-
-<%="#{@instructor.first_name} currently teaches the following courses: "%>
-
+<br /><h1><%= @instructor.full_name %></h1>
 <br />
+<hr>
+<br />
+
+<h3><%="#{@instructor.first_name} currently teaches the following courses: "%></h3>
     <% @instructor.cohorts.each do |cohort| %>
         <%= link_to "#{cohort.name}", edit_cohort_path(cohort)%><br />
     <% end %>
   <br />
-  <%="#{@instructor.first_name} currently teaches the following students: "%><br />
+<h3><%="#{@instructor.first_name} currently teaches the following students: "%></h3>
     <% @instructor.students.each do |student| %>
         <%= link_to "#{student.full_name}", edit_student_path(student)%><br />
     <% end %>

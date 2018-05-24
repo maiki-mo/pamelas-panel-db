@@ -1,13 +1,11 @@
-<h3>Student: <%= @student.full_name %></h3><br />
+<br /><h1><%= @student.full_name %></h1><br /><hr><br />
 
-<%="#{@student.first_name} currently attends the following courses: "%>
-
-<br />
+<h3><%="#{@student.first_name} currently attends the following courses: "%></h3>
     <% @student.cohorts.each do |cohort| %>
         <%= link_to "#{cohort.name}", edit_cohort_path(cohort)%><br />
     <% end %>
   <br />
-  <%="#{@student.first_name} is taught by: "%><br />
+<h3><%="#{@student.first_name} is taught by: "%></h3>
     <% @student.instructors.uniq.each do |instructor| %>
         <%= link_to "#{instructor.full_name}", edit_instructor_path(instructor)%><br />
     <% end %>
